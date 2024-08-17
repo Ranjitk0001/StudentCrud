@@ -17,10 +17,14 @@ export class StudComponent implements OnInit{
   constructor(private dataService:DataService) {}
 
   ngOnInit(): void {
-      this.dataService.getData("students").subscribe(data=>{
-        this.students=data;
-        
-        // alert(JSON.stringify(data));
-      })
+      this.fillList();
+  }
+
+  fillList(){
+    this.dataService.getData("students").subscribe(data=>{
+      this.students=data;
+      
+      // alert(JSON.stringify(data));
+    })
   }
 }
