@@ -36,7 +36,9 @@ export class StudComponent implements OnInit{
       this.studObj.sname="";
       this.studObj.age=0;
     }
-    insertStud(){
+
+    insertStud()
+    {
       this.dataService.insertData("students",this.studObj).subscribe(
         data=>{
           this.fillList();
@@ -45,6 +47,31 @@ export class StudComponent implements OnInit{
         }
       );
     }
+
+    updateStud(sno:number){
+    //  alert(sno);
+    this.dataService.getData("students/"+sno).subscribe(data=>{
+      this.studObj=data;
+    
+      // alert(JSON.stringify(data));
+    });
+    }
    
+    editstud(){
+      this.dataService.updateData("students",this.studObj).subscribe(
+        data=>{
+          this.fillList();
+          alert("Data Updated Successfully!!");
+          this.clearData();
+        }
+      );
+    }
+
+    deleteStud(sno:number){
+      //  alert(sno);
+      this.dataService.deleteData("students/"+sno).subscribe(data=>{
+        this.fillList();
+      });
+      }
   
 }

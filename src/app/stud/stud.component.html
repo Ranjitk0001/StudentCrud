@@ -4,6 +4,8 @@
         <th>Student  No</th>
         <th> Student Name</th>
         <th> Student age</th>
+        <th> Update</th>
+        <th> Delete</th>
     </tr>
     <!-- @for (stud of student; track $index) { -->
         <!-- <tr> -->
@@ -11,6 +13,9 @@
         <td>{{stud.sno}}</td>
         <td>{{stud.sname}}</td>
         <td>{{stud.age}}</td>
+        <td><button (click)="updateStud(stud.sno)">Update</button></td>
+        <td><button (click)="deleteStud(stud.sno)">Delete</button></td>
+        
     </tr>
 <!-- } -->
     
@@ -36,7 +41,8 @@
         <th><input type="text" name="age" [(ngModel)]="studObj.age"></th>
     </tr>
     <tr>
-        <th colspan="2"><button (click)="insertStud()">Insert</button></th>
+        <th colspan="1"><button (click)="insertStud()">Insert</button></th>
+        <th colspan="1"><button (click)="editstud()">Edit</button></th>
     </tr>
 
 </table>

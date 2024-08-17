@@ -22,4 +22,17 @@ export class DataService {
   {
     return this.httpClient.post(this.serverPath + url,obj );
   }
+
+  
+  updateData(url:string,obj:any):Observable<any>
+  {
+    return this.httpClient.put(this.serverPath + url,obj );
+  }
+
+  deleteData(url:string):Observable<any>
+  {
+    return this.httpClient.delete(this.serverPath + url);
+  }
+
+
 }
