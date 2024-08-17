@@ -17,7 +17,7 @@ export class StudComponent implements OnInit{
   constructor(private dataService:DataService) {}
 
   ngOnInit(): void {
-      this.dataService.getData().subscribe(data=>{
+      this.dataService.getData("students").subscribe(data=>{
         this.students=data;
         
         // alert(JSON.stringify(data));
