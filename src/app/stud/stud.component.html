@@ -15,3 +15,28 @@
 <!-- } -->
     
     </table>
+
+
+    <br>
+<h2>Insert Data</h2>
+<table align="center">
+    <tr>
+        <th colspan="2"><h2>Insert Data</h2></th>
+    </tr>
+    <tr align="left">
+        <th>Student No:</th>
+        <th><input type="text" name="sno" [(ngModel)]="studObj.sno"></th>
+    </tr>
+    <tr align="left">
+        <th>Student Name:</th>
+        <th><input type="text" name="sname" [(ngModel)]="studObj.sname"></th>
+    </tr>
+    <tr align="left">
+        <th>Age:</th>
+        <th><input type="text" name="age" [(ngModel)]="studObj.age"></th>
+    </tr>
+    <tr>
+        <th colspan="2"><button (click)="insertStud()">Insert</button></th>
+    </tr>
+
+</table>

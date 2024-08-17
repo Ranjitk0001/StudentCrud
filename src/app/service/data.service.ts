@@ -17,11 +17,9 @@ export class DataService {
     return this.httpClient.get(this.serverPath+url);
   }
 
-  fillData(){
-    
-  }
+
   insertData(url:string,obj:any):Observable<any>
   {
-    return this.httpClient.get(this.serverPath + url,obj );
+    return this.httpClient.post(this.serverPath + url,obj );
   }
 }
