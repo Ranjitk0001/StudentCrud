@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../service/data.service';
+import { DataService, Options } from '../service/data.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Student } from '../pojo/Student';
@@ -15,6 +15,7 @@ export class StudComponent implements OnInit{
 
   students:any=[];
   studObj:Student=new Student();
+  options:Options=new Options();
 
   constructor(private dataService:DataService) {}
 
@@ -23,7 +24,7 @@ export class StudComponent implements OnInit{
   }
 
   fillList(){
-    this.dataService.getData("students").subscribe(data=>{
+    this.dataService.getData("students", this.options).subscribe(data=>{
       this.students=data;
     
       // alert(JSON.stringify(data));
@@ -39,7 +40,7 @@ export class StudComponent implements OnInit{
 
     insertStud()
     {
-      this.dataService.insertData("students",this.studObj).subscribe(
+      this.dataService.insertData("students",this.studObj, this.options).subscribe(
         data=>{
           this.fillList();
           alert("Data insert Successfully!!");
@@ -50,7 +51,7 @@ export class StudComponent implements OnInit{
 
     updateStud(sno:number){
     //  alert(sno);
-    this.dataService.getData("students/"+sno).subscribe(data=>{
+    this.dataService.getData("students/"+sno, this.options).subscribe(data=>{
       this.studObj=data;
     
       // alert(JSON.stringify(data));
@@ -58,7 +59,7 @@ export class StudComponent implements OnInit{
     }
    
     editstud(){
-      this.dataService.updateData("students",this.studObj).subscribe(
+      this.dataService.updateData("students",this.studObj, this.options).subscribe(
         data=>{
           this.fillList();
           alert("Data Updated Successfully!!");
@@ -69,7 +70,7 @@ export class StudComponent implements OnInit{
 
     deleteStud(sno:number){
       //  alert(sno);
-      this.dataService.deleteData("students/"+sno).subscribe(data=>{
+      this.dataService.deleteData("students/"+sno, this.options).subscribe(data=>{
         this.fillList();
       });
       }

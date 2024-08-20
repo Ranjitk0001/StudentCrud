@@ -10,29 +10,54 @@ export class DataService {
 
   constructor(private httpClient:HttpClient) {}
     
-  serverPath:string="http://localhost:8085/"
+  serverPath:string="http://localhost:8085/v1/admin/";
   
-  getData(url:string):Observable<any>
+  getData(url:string, options: Options):Observable<any>
   {
-    return this.httpClient.get(this.serverPath+url);
+    options = this.setHeaders(options);
+    return this.httpClient.get(this.serverPath+url, options);
   }
 
 
-  insertData(url:string,obj:any):Observable<any>
+  insertData(url:string,obj:any, options: Options):Observable<any>
   {
-    return this.httpClient.post(this.serverPath + url,obj );
+    options = this.setHeaders(options);
+    return this.httpClient.post(this.serverPath + url,obj , options);
   }
 
   
-  updateData(url:string,obj:any):Observable<any>
+  updateData(url:string,obj:any, options: Options):Observable<any>
   {
-    return this.httpClient.put(this.serverPath + url,obj );
+    options = this.setHeaders(options);
+    return this.httpClient.put(this.serverPath + url,obj , options);
   }
 
-  deleteData(url:string):Observable<any>
+  deleteData(url:string, options: Options):Observable<any>
   {
-    return this.httpClient.delete(this.serverPath + url);
+    options = this.setHeaders(options);
+    return this.httpClient.delete(this.serverPath + url, options);
+  }
+
+  private setHeaders(options:Options) {
+    if (!options)
+      options = new Options();
+    if (sessionStorage.getItem('access-token')) {
+      options.headers['access-token'] = sessionStorage.getItem('access-token');
+    }
+    return options;
   }
 
 
+}
+
+
+export class Options {
+  params: any;
+  headers: any;
+  observe: any;
+  constructor() {
+    this.params = {};
+    this.headers = {};
+    this.observe = 'body';
+  }
 }
