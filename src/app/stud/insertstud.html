@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="container">
+        <h2 class="text-center"><b>Insert Data</b></h2>
+    
+        <table align="center">
+            <tr>
+                <th colspan="2"><h2>Insert Data</h2></th>
+            </tr>
+            <tr align="left">
+                <th>Student No:</th>
+                <th><input type="text" name="sno" [(ngModel)]="studObj.sno"></th>
+            </tr>
+            <tr align="left">
+                <th>Student Name:</th>
+                <th><input type="text" name="sname" [(ngModel)]="studObj.sname"></th>
+            </tr>
+            <tr align="left">
+                <th>Age:</th>
+                <th><input type="text" name="age" [(ngModel)]="studObj.age"></th>
+            </tr>
+            <tr>
+                <th colspan="1"><button (click)="insertStud()">Insert</button></th>
+                <th colspan="1"><button (click)="editstud()">Edit</button></th>
+            </tr>
+        
+        </table>
+    
+    </div>
+
+</body>
+</html>

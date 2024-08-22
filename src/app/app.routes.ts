@@ -8,5 +8,6 @@ export const routes: Routes = [
     {path:"homepath",component:AppComponent},
     {path:"studpath",component:StudComponent},
     {path:"loginpath",component:LoginComponent},
+  
     
 ];

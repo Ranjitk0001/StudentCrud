@@ -3,11 +3,14 @@ import { DataService, Options } from '../service/data.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Student } from '../pojo/Student';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-stud',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule,
+    RouterLink,
+    FormsModule],
   templateUrl: './stud.component.html',
   styleUrl: './stud.component.css'
 })
